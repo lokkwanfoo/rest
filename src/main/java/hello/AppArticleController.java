@@ -12,17 +12,19 @@ import com.thedeanda.lorem.LoremIpsum;
 
 @RestController
 public class AppArticleController {
-
-    private String appName;
-    private int nArticle;
     
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping("/apparticle")
-    public ArrayList AppArticle(@RequestParam(value="app") String name, @RequestParam(value="amount") int nArticle) {
+    public ArrayList AppArticle(@RequestParam(value="app") String appName, @RequestParam(value="amount") int nArticle) {
     	
-    	//Define variables to pass to SiteCore
-    	this.appName = name;
-    	this.nArticle = nArticle;
+    return getSiteCoreArticle(appName, nArticle);
+    }
+    
+    public ArrayList getSiteCoreArticle(String appName, int nArticle) {
+    	
+    	String SiteCoreId = appName + nArticle;
+    	
+    	System.out.println(SiteCoreId);
     	
     	//Define new instance of Lorem Ipsum generator
     	Lorem lorem = LoremIpsum.getInstance();
@@ -36,8 +38,7 @@ public class AppArticleController {
     	}
     	
     	//Return the ArrayList
-    	return al;
-    	
+    	return al;		
     }
     
 }
