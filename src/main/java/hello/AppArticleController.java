@@ -15,7 +15,7 @@ public class AppArticleController {
     
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping("/apparticle")
-    public ArrayList AppArticle(@RequestParam(value="app") String appName, @RequestParam(value="amount") int nArticle) {
+    public ArrayList getAppArticle(@RequestParam(value="app") String appName, @RequestParam(value="amount") int nArticle) {
     	
     return getSiteCoreArticle(appName, nArticle);
     }
