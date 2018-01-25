@@ -15,14 +15,14 @@ public class AppArticleController {
     
     @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping("/apparticle")
-    public ArrayList AppArticle(@RequestParam(value="app") String appName, @RequestParam(value="amount") int nArticle) {
+    public ArrayList AppArticle(@RequestParam(value="app") String appName) {
     	
-    return getSiteCoreArticle(appName, nArticle);
+    return getSiteCoreArticle(appName);
     }
     
-    public ArrayList getSiteCoreArticle(String appName, int nArticle) {
+    public ArrayList getSiteCoreArticle(String appName) {
     	
-    	String SiteCoreId = appName + nArticle;
+    	String SiteCoreId = appName;
     	
     	System.out.println(SiteCoreId);
     	
@@ -33,7 +33,7 @@ public class AppArticleController {
     	ArrayList al = new ArrayList();
     	
     	//For-loop to determine how many articles put in the ArrayList
-    	for (int i = 0; i < nArticle; i++) {
+    	for (int i = 0; i < 5; i++) {
     		al.add(new AppArticle(i, lorem.getTitle(2, 4), lorem.getHtmlParagraphs(2, 4)));
     	}
     	
